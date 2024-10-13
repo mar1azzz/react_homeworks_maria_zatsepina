@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "My first React app with a main block with title, a buttons that shows an alert, and a rotating cosmonaut image on hover.",
+  "author": "Maria Zatsepina",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
