@@ -1,0 +1,19 @@
+.main-div {
+  background-color: rgba(128, 0, 128, 0.7);
+  padding: 45px 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+}
+
+.title-text {
+  color: #f5deb3;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.button-container {
+  margin-top: 20px;
+}
