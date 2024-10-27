@@ -1,12 +1,12 @@
 import './App.css';
-import MainDivWithTitle from './components/MainDivWithTitle/MainDivWithTitle';
-import Cosmonaut from './components/Cosmonaut/Cosmonaut';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <>
-      <Cosmonaut></Cosmonaut>
-      <MainDivWithTitle></MainDivWithTitle>
+      <Header></Header>
+      <Footer></Footer>
     </>
   );
 };
