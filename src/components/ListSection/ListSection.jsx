@@ -2,15 +2,14 @@
 import './ListSection.css';
 
 const ListSection = ({ title, children, clickable = false }) => {
-    const isImage = typeof title !== 'string';
-
     return (
         <div className="list-section">
-            {isImage ? (
-                <img src={title} alt="List Icon" className="list-section-image" />
-            ) : (
+            {typeof title === 'string' ? (
                 <h2 className="list-section-title">{title}</h2>
+            ) : (
+                <div className="list-section-title">{title}</div>
             )}
+            
             <ul className="list-section-children">
                 {children.map((child, index) => {
                     if (clickable && typeof child === 'object') {
@@ -30,10 +29,7 @@ const ListSection = ({ title, children, clickable = false }) => {
                         return (
                             <li key={index} className="list-section-item">
                                 {clickable ? (
-                                    <a
-                                        href="#"
-                                        className="list-section-link"
-                                    >
+                                    <a href="#" className="list-section-link">
                                         {child}
                                     </a>
                                 ) : (

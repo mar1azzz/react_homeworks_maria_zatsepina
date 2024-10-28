@@ -12,10 +12,10 @@
     text-align: left;
 }
 
-.list-section-image {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
+.list-section-title img {
+    width: auto;
+    height: 30px;
+    margin-top: 15px;
 }
 
 .list-section-children {
