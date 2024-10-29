@@ -6,7 +6,7 @@
     padding-right: 0;
     border: 1px solid #e0e0e0;
     width: 580px;
-    background-color: #ffffff;
+    background-color: white;
 }
 
 .product-image {
@@ -32,7 +32,7 @@
 }
 
 .product-description {
-    color: #6b7280;
+    color: #546285;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;

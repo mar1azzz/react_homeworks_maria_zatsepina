@@ -27,15 +27,17 @@
 .list-section-item {
     font-size: 15px;
     margin-bottom: 8px;
+    color: #546285;
 }
 
 .list-section-link {
-    color: #808080;
+    color: #546285;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .list-section-link:hover,
 .list-section-link:active {
-    color: #00bcd4;
+    color: #35B8BE;
+    ;
 }

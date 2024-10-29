@@ -1,6 +1,6 @@
 .button-with-phrase {
   background-color: #35B8BE; 
-  color: #FFFFFF; 
+  color: white; 
   font-size: 16px;
   cursor: pointer;
   border: none;
@@ -12,21 +12,23 @@
 
 .button-with-phrase:hover,
 .button-with-phrase.clicked {
-  background-color: #FFFFFF; 
-  color: #35B8BE;
+  background-color: white; 
+  color: #222222;
+  ;
   ; 
   border: 1px solid #B0B0B0; 
 }
 
 .button-with-phrase.inverted {
-  background-color: #FFFFFF;
-  color: #35B8BE;
+  background-color: white;
+  color: #222222;
+  ;
   border: 1px solid #B0B0B0; 
 }
 
 .button-with-phrase.inverted:hover,
 .button-with-phrase.inverted.clicked {
   background-color: #35B8BE;
-  color: #FFFFFF;
+  color: white;
   border: none;
 }

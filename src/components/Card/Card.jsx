@@ -8,7 +8,6 @@ const ProductCard = ({ product }) => {
     const handleAddToCart = () => {
         console.log(`Добавлено в корзину: ${product.name}`);
     };
-
     return (
         <div className="product-card">
             <img src={getImgUrl(product.image)} alt={product.name} className="product-image" />

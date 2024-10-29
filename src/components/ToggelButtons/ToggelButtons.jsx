@@ -15,16 +15,19 @@ const ToggleButtons = () => {
                 <Button
                     buttonName="Desert"
                     isSelected={selectedButton === 0}
+                    isInverted={true}
                     onClickHandler={() => handleClick(0)}
                 />
                 <Button
                     buttonName="Dinner"
                     isSelected={selectedButton === 1}
+                    isInverted={true}
                     onClickHandler={() => handleClick(1)}
                 />
                 <Button
                     buttonName="Breakfast"
                     isSelected={selectedButton === 2}
+                    isInverted={true}
                     onClickHandler={() => handleClick(2)}
                 />
             </Row>
