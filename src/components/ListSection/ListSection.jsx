@@ -15,7 +15,7 @@ class ListSection extends Component {
                 
                 <ul className="list-section-children">
                     {children.map((child, index) => {
-                        const key = child.id || `${index}-${typeof child === 'object' ? child.label : child}`;
+                        const key = child.id + 'list-element' || `${index}-${typeof child === 'object' ? child.label : child}`;
                         if (clickable && typeof child === 'object') {
                             return (
                                 <li key={key} className="list-section-item">
