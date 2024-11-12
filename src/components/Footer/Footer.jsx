@@ -34,10 +34,10 @@ class Footer extends Component {
                             <ListSection
                                 title="TEMPLATE"
                                 children={[
-                                    { label: 'Style Guide', url: '/style-guide' },
-                                    { label: 'Changelog', url: '/changelog' },
-                                    { label: 'Licence', url: '/licence' },
-                                    { label: 'Webflow University', url: 'https://university.webflow.com' }
+                                    { label: 'Style Guide', url: 'https://www.google.com' },
+                                    { label: 'Changelog', url: 'https://www.google.com' },
+                                    { label: 'Licence', url: 'https://www.google.com' },
+                                    { label: 'Webflow University', url: 'https://www.google.com' }
                                 ]}
                                 clickable={true}
                             />
