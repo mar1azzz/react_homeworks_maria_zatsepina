@@ -13,7 +13,6 @@ class ToggleButtons extends Component {
 
     handleClick = (index) => {
         this.setState({ selectedButton: index });
-        console.log(index + 1);
     };
 
     render() {
