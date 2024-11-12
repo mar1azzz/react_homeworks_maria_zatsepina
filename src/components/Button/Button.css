@@ -1,0 +1,34 @@
+.button-with-phrase {
+  background-color: #35B8BE; 
+  color: white; 
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  width: 147px;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.button-with-phrase:hover,
+.button-with-phrase.clicked {
+  background-color: white; 
+  color: #222222;
+  ;
+  ; 
+  border: 1px solid #B0B0B0; 
+}
+
+.button-with-phrase.inverted {
+  background-color: white;
+  color: #222222;
+  ;
+  border: 1px solid #B0B0B0; 
+}
+
+.button-with-phrase.inverted:hover,
+.button-with-phrase.inverted.clicked {
+  background-color: #35B8BE;
+  color: white;
+  border: none;
+}
