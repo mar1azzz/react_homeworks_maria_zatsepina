@@ -81,7 +81,7 @@ class MenuSection extends Component {
                     <>
                         <FlexContainer>
                             {displayedProducts.map((product) => (
-                                <ProductCard key={product.id} product={product} addToCart={addToCart}/>
+                                <ProductCard key={product.id+'product'} product={product} addToCart={addToCart}/>
                             ))}
                         </FlexContainer>  
                         <div className="menu-footer">
