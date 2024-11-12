@@ -5,11 +5,21 @@ import Footer from './components/Footer/Footer';
 import MenuSection from './components/MenuSection/MenuSection';
 
 class App extends Component {
+    state = {
+        cartCount: 0
+    };
+
+    addToCart = (quantity) => {
+        this.setState((prevState) => ({
+            cartCount: prevState.cartCount + quantity
+        }));
+    };
+
     render() {
         return (
             <>
-                <Header />
-                <MenuSection />
+                <Header cartCount={this.state.cartCount} />
+                <MenuSection addToCart={this.addToCart} />
                 <Footer />
             </>
         );

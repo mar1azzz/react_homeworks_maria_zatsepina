@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { Component } from 'react';
 import { FlexContainer } from "../FlexContainer/FlexContainer";
 import { product } from "../../mockdata/mockdata";
@@ -9,13 +11,14 @@ import './MenuSection.css';
 
 class MenuSection extends Component {
     render() {
+        const { addToCart, products } = this.props;
         return (
             <section className="menu-section">
                 <BrowseMenuText />
                 <ToggleButtons />
                 <FlexContainer>
-                    {product.map((item) => (
-                        <ProductCard key={item.id} product={item} />
+                    {product.map((product) => (
+                        <ProductCard key={product.id} product={product} addToCart={addToCart}/>
                     ))}
                 </FlexContainer>  
                 <div className="menu-footer">

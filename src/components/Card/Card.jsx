@@ -7,12 +7,15 @@ import './Card.css';
 
 class ProductCard extends Component {
     handleAddToCart = () => {
-        const { product } = this.props;
-        console.log(`Добавлено в корзину: ${product.name}`);
+        const { addToCart, product } = this.props;
+        const quantity = parseInt(this.quantityInput.value, 10);
+        addToCart(quantity);
+        console.log(`Added to cart: ${product.name}, Quantity: ${quantity}`);
     };
 
     render() {
         const { product } = this.props;
+
         return (
             <div className="product-card">
                 <img src={getImgUrl(product.image)} alt={product.name} className="product-image" />
@@ -23,7 +26,13 @@ class ProductCard extends Component {
                     </div>
                     <p className="product-description">{product.description}</p>
                     <div className="product-actions">
-                        <input type="number" min="1" defaultValue="1" className="product-quantity no-arrows" />
+                        <input
+                            type="number"
+                            min="1"
+                            defaultValue="1"
+                            className="product-quantity no-arrows"
+                            ref={(input) => (this.quantityInput = input)}
+                        />
                         <Button
                             buttonName="Add to cart"
                             onClickHandler={this.handleAddToCart}
