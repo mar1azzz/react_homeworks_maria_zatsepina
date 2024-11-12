@@ -2,7 +2,6 @@
 import { Component } from 'react';
 import Price from '../Price/Price';
 import Button from '../Button/Button';
-import { getImgUrl } from '../../app/getImage';
 import './Card.css';
 
 class ProductCard extends Component {
@@ -10,7 +9,7 @@ class ProductCard extends Component {
         const { addToCart, product } = this.props;
         const quantity = parseInt(this.quantityInput.value, 10);
         addToCart(quantity);
-        console.log(`Added to cart: ${product.name}, Quantity: ${quantity}`);
+        console.log(`Added to cart: ${product.meal}, Quantity: ${quantity}`);
     };
 
     render() {
@@ -18,13 +17,17 @@ class ProductCard extends Component {
 
         return (
             <div className="product-card">
-                <img src={getImgUrl(product.image)} alt={product.name} className="product-image" />
-                <div className='product-info'>
-                    <div className='title-and-price'>
-                        <h3 className="product-name">{product.name}</h3>
+                <img src={product.img} alt={product.meal} className="product-image" />
+                <div className="product-info">
+                    <div className="title-and-price">
+                        <h3 className="product-name">{product.meal}</h3>
                         <Price amount={product.price} />
                     </div>
-                    <p className="product-description">{product.description}</p>
+                    {/* Tooltip container */}
+                    <div className="product-description-container">
+                        <p className="product-description">{product.instructions}</p>
+                        <span className="tooltip-text">{product.instructions}</span>
+                    </div>
                     <div className="product-actions">
                         <input
                             type="number"
