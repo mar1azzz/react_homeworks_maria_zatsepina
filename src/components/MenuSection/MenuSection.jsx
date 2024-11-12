@@ -28,6 +28,11 @@ class MenuSection extends Component {
     fetchProducts = async () => {
         try {
             const response = await fetch('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals');
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch products');
+            }
+            
             const data = await response.json();
             this.setState({ 
                 products: data, 
@@ -35,7 +40,8 @@ class MenuSection extends Component {
                 loading: false 
             });
         } catch (error) {
-            this.setState({ error: 'Failed to fetch products', loading: false });
+            console.error('Error fetching products:', error);
+            this.setState({ error: true, loading: false });
         }
     };
 
@@ -49,16 +55,28 @@ class MenuSection extends Component {
         });
     };
 
+    handleReload = () => {
+        window.location.reload();
+    };
+
     render() {
         const { addToCart } = this.props;
-        const { displayedProducts, loading, error, products, itemsPerPage, page } = this.state;
+        const { displayedProducts, loading, error, products } = this.state;
         
         return (
             <section className="menu-section">
                 <BrowseMenuText />
                 <ToggleButtons />
                 {loading && <p>Loading...</p>}
-                {error && <p>{error}</p>}
+                {error && (
+                    <p className="error-message">
+                        Sorry, looks like we have some troubles on our server, please{' '}
+                        <span className="reload-link" onClick={this.handleReload}>
+                            reload
+                        </span>{' '}
+                        the page or visit us later.
+                    </p>
+                )}
                 {!loading && !error && (
                     <>
                         <FlexContainer>
