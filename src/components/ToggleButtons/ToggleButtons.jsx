@@ -1,44 +1,34 @@
-import { Component } from 'react';
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
 import Button from '../Button/Button';
 import { FlexContainer } from '../FlexContainer/FlexContainer';
 import './ToggleButtons.css';
 
-class ToggleButtons extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedButton: 0
-        };
-    }
-
-    handleClick = (index) => {
-        this.setState({ selectedButton: index });
+const ToggleButtons = ({ filterByCategory }) => {
+    const [selectedButton, setSelectedButton] = useState('dessert');
+    const buttonData = [
+        { id: 'dessert', label: 'Dessert' },
+        { id: 'dinner', label: 'Dinner' },
+        { id: 'breakfast', label: 'Breakfast' },
+    ];
+    const handleClick = (buttonId, category) => {
+        setSelectedButton(buttonId);
+        filterByCategory(category);
     };
-
-    render() {
-        const { selectedButton } = this.state;
-        const buttonData = [
-            { id: 'desert', label: 'Desert' },
-            { id: 'dinner', label: 'Dinner' },
-            { id: 'breakfast', label: 'Breakfast' }
-        ];
-
-        return (
-            <div className='toggle-buttons'>
-                <FlexContainer>
-                    {buttonData.map((button, index) => (
-                        <Button
-                            key={button.id}
-                            buttonName={button.label}
-                            isSelected={selectedButton === index}
-                            isInverted={true}
-                            onClickHandler={() => this.handleClick(index)}
-                        />
-                    ))}
-                </FlexContainer>
-            </div>
-        );
-    }
-}
-
+    return (
+        <div className="toggle-buttons">
+            <FlexContainer>
+                {buttonData.map((button) => (
+                    <Button
+                        key={`${button.id}-${button.label}`}
+                        buttonName={button.label}
+                        isSelected={selectedButton === button.id}
+                        isInverted={true}
+                        onClickHandler={() => handleClick(button.id, button.label)}
+                    />
+                ))}
+            </FlexContainer>
+        </div>
+    );
+};
 export default ToggleButtons;
