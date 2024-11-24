@@ -21,6 +21,7 @@
     align-items: center;
     margin-bottom: -25px;
     margin-top: -15px;
+    min-width: 444px;
 }
 
 .product-name {
