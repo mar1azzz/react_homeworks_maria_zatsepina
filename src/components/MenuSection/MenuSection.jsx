@@ -7,6 +7,7 @@ import ProductCard from '../Card/Card';
 import Button from '../Button/Button';
 import BrowseMenuText from '../BrowseMenuText/BrowseMenuText';
 import ToggleButtons from '../ToggleButtons/ToggleButtons';
+import useFetch from '../../hooks/useFetch';
 import './MenuSection.css';
 
 const MenuSection = ({ addToCart }) => {
@@ -19,10 +20,14 @@ const MenuSection = ({ addToCart }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    const apiUrl = 'https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals';
+
+    useFetch(apiUrl, { method: 'GET' });
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals');
+                const response = await fetch(apiUrl);
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');
                 }
@@ -49,12 +54,14 @@ const MenuSection = ({ addToCart }) => {
         setDisplayedProducts(filtered.slice(0, itemsPerPage));
         setPage(0);
     };
+
     const loadMore = () => {
         const nextPage = page + 1;
         const additionalProducts = filteredProducts.slice(0, (nextPage + 1) * itemsPerPage);
         setDisplayedProducts(additionalProducts);
         setPage(nextPage);
     };
+
     return (
         <section className="menu-section">
             <BrowseMenuText />
@@ -86,4 +93,5 @@ const MenuSection = ({ addToCart }) => {
         </section>
     );
 };
+
 export default MenuSection;
