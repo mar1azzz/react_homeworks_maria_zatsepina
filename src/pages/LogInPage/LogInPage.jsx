@@ -23,7 +23,10 @@ const LogInPage = () => {
       <div
         className="login-page-container"
         style={{
-          backgroundImage: `url(${getImgUrl("login_background.png")})`,
+            backgroundImage: `url(${getImgUrl("login_background.png")})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
         }}
       >
         <LogIn />
