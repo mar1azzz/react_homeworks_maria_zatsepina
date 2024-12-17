@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import { FetchOptions } from "../types/useFetch";
 
-const useFetch = (url, options) => {
+const useFetch = (url: string, options?: FetchOptions): void => {
   useEffect(() => {
     const logRequest = async () => {
       try {
