@@ -1,7 +1,12 @@
-/* eslint-disable react/prop-types */
 import './Button.css';
+import { ButtonProps } from '../../types/Button';
 
-const Button = ({ buttonName, onClickHandler, isSelected, isInverted }) => (
+const Button: React.FC<ButtonProps> = ({
+  buttonName,
+  onClickHandler,
+  isSelected = false,
+  isInverted = false,
+}): JSX.Element => (
   <button
     className={`button-with-phrase ${isSelected ? 'clicked' : ''} ${isInverted ? 'inverted' : ''}`}
     onClick={onClickHandler}
@@ -9,4 +14,5 @@ const Button = ({ buttonName, onClickHandler, isSelected, isInverted }) => (
     {buttonName}
   </button>
 );
+
 export default Button;

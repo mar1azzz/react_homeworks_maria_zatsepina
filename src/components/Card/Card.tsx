@@ -1,16 +1,18 @@
-/* eslint-disable react/prop-types */
 import { useRef } from 'react';
 import Price from '../Price/Price';
 import Button from '../Button/Button';
+import { ProductCardProps } from '../../types/Product';
 import './Card.css';
 
-const ProductCard = ({ product, addToCart }) => {
-  const quantityInput = useRef();
+const ProductCard: React.FC<ProductCardProps> = ({ product, addToCart }) => {
+  const quantityInput = useRef<HTMLInputElement>(null);
+
   const handleAddToCart = () => {
-    const quantity = parseInt(quantityInput.current.value, 10);
+    const quantity = parseInt(quantityInput.current?.value || '1', 10);
     addToCart(quantity);
     console.log(`Added to cart: ${product.meal}, Quantity: ${quantity}`);
   };
+
   return (
     <div className="product-card">
       <img src={product.img} alt={product.meal} className="product-image" />
@@ -37,4 +39,5 @@ const ProductCard = ({ product, addToCart }) => {
     </div>
   );
 };
+
 export default ProductCard;

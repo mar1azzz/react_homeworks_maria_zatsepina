@@ -1,47 +1,49 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 import "./LogInForm.css";
+import { User } from "../../types/LogInForm";
 
-const LogInForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+const LogInForm: React.FC = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+
   const handleLogin = () => {
     if (!username || !password) {
       setError("Both fields are required.");
       return;
     }
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
+
+    const storedUsers = localStorage.getItem("users");
+    const users: User[] = storedUsers ? JSON.parse(storedUsers) : [];
+    const user = users.find((u) => u.username === username && u.password === password);
+
     if (user) {
-      localStorage.setItem("isLoggedIn", true);
+      localStorage.setItem("isLoggedIn", "true");
       alert("Logged in successfully!");
-      setError("");
-      setUsername("");
-      setPassword("");
+      resetForm();
     } else {
       const confirmRegistration = window.confirm(
         "The username and password do not exist. Would you like to register?"
       );
       if (confirmRegistration) {
-        const newUser = { username, password };
-        users.push(newUser);
-        localStorage.setItem("users", JSON.stringify(users));
-        localStorage.setItem("isLoggedIn", true);
+        const newUser: User = { username, password };
+        const updatedUsers = [...users, newUser];
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        localStorage.setItem("isLoggedIn", "true");
         alert("Account created and logged in successfully!");
-        setError("");
-        setUsername("");
-        setPassword("");
+        resetForm();
       } else {
-        setUsername("");
-        setPassword("");
-        setError("");
+        resetForm();
       }
     }
   };
+
   const handleCancel = () => {
+    resetForm();
+  };
+
+  const resetForm = () => {
     setUsername("");
     setPassword("");
     setError("");
@@ -71,16 +73,8 @@ const LogInForm = () => {
         </div>
         {error && <p className="error">{error}</p>}
         <div className="button-group">
-          <Button
-            buttonName="Submit"
-            onClickHandler={handleLogin}
-            isSelected={false}
-          />
-          <Button
-            buttonName="Cancel"
-            onClickHandler={handleCancel}
-            isInverted={true}
-          />
+          <Button buttonName="Submit" onClickHandler={handleLogin} />
+          <Button buttonName="Cancel" onClickHandler={handleCancel} isInverted />
         </div>
       </div>
     </div>
