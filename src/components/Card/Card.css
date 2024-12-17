@@ -81,6 +81,7 @@
     align-items: center;
     gap: 8px;
     margin-top: 10px;
+    max-width: 200px;
 }
 
 .no-arrows::-webkit-outer-spin-button,
