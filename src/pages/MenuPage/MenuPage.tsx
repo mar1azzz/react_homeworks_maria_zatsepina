@@ -14,7 +14,7 @@ const MenuPage: React.FC = () => {
 
   return (
     <>
-      <Header cartCount={cartCount} />
+      <Header />
       <MenuSection addToCart={addToCart} />
       <Footer />
     </>

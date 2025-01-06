@@ -5,7 +5,7 @@ import HomePageSection from '../../components/HomePageSection/HomePageSection';
 const HomePage = () => {
     return (
         <>
-            <Header cartCount={0} />
+            <Header/>
             <HomePageSection />
             <Footer />
         </>

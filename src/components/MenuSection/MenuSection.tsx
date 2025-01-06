@@ -1,46 +1,37 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlexContainer } from '../FlexContainer/FlexContainer';
 import ProductCard from '../Card/Card';
 import Button from '../Button/Button';
 import BrowseMenuText from '../BrowseMenuText/BrowseMenuText';
 import ToggleButtons from '../ToggleButtons/ToggleButtons';
-import { MenuSectionProps } from "../../types/MenuSection";
+import { MenuSectionProps } from '../../types/MenuSection';
 import { ExtendedProduct } from '../../types/Product';
+import { useFetchWithLogging } from '../../hooks/useFetch';
 import './MenuSection.css';
 
 const MenuSection: React.FC<MenuSectionProps> = ({ addToCart }): JSX.Element => {
-  const [products, setProducts] = useState<ExtendedProduct[]>([]);
-  const [displayedProducts, setDisplayedProducts] = useState<ExtendedProduct[]>([]);
+  const apiUrl = 'https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals';
+
+  const { data: products, isLoading, error } = useFetchWithLogging<ExtendedProduct[]>(apiUrl);
+
+  const [categories, setCategories] = useState<string[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ExtendedProduct[]>([]);
+  const [displayedProducts, setDisplayedProducts] = useState<ExtendedProduct[]>([]);
   const [category, setCategory] = useState<string>('Dessert');
   const [itemsPerPage, setItemsPerPage] = useState<number>(6);
   const [page, setPage] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false);
-
-  const apiUrl = 'https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals';
 
   useEffect(() => {
-    const fetchProducts = async (): Promise<void> => {
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
-        const data: ExtendedProduct[] = await response.json();
-        setProducts(data);
-        filterByCategory('Dessert', data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-        setError(true);
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
+    if (products) {
+      const uniqueCategories = products
+      .map((item) => item.category)
+      .filter((value, index, self) => self.indexOf(value) === index);
+    setCategories(uniqueCategories);
+    filterByCategory(category, products);
+    }
+  }, [products]);
 
-  const filterByCategory = (selectedCategory: string, data: ExtendedProduct[] = products): void => {
+  const filterByCategory = (selectedCategory: string, data: ExtendedProduct[] = products || []) => {
     setCategory(selectedCategory);
     const filtered =
       selectedCategory === 'All'
@@ -51,7 +42,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({ addToCart }): JSX.Element => 
     setPage(0);
   };
 
-  const loadMore = (): void => {
+  const loadMore = () => {
     const nextPage = page + 1;
     const additionalProducts = filteredProducts.slice(0, (nextPage + 1) * itemsPerPage);
     setDisplayedProducts(additionalProducts);
@@ -65,8 +56,8 @@ const MenuSection: React.FC<MenuSectionProps> = ({ addToCart }): JSX.Element => 
   return (
     <section className="menu-section">
       <BrowseMenuText />
-      <ToggleButtons filterByCategory={filterByCategory} />
-      {loading && <p>Loading...</p>}
+      <ToggleButtons filterByCategory={filterByCategory} categories={categories} />
+      {isLoading && <p>Loading...</p>}
       {error && (
         <p className="error-message">
           Sorry, looks like we have some troubles on our server, please{' '}
@@ -76,7 +67,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({ addToCart }): JSX.Element => 
           the page or visit us later.
         </p>
       )}
-      {!loading && !error && (
+      {!isLoading && !error && (
         <>
           <FlexContainer>
             {displayedProducts.map((product) => (

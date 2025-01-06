@@ -19,7 +19,7 @@ const LogInPage = () => {
 
   return (
     <>
-      <Header cartCount={0} />
+      <Header/>
       <div
         className="login-page-container"
         style={{

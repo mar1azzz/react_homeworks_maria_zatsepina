@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logIn, addUser, setVerification } from "../../store/slices/userSlice";
+import { RootState } from "../../store";
 import Button from "../Button/Button";
 import "./LogInForm.css";
-import { User } from "../../types/LogInForm";
 
 const LogInForm: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const dispatch = useDispatch();
+  const allUsers = useSelector((state: RootState) => state.user.allUsers);
 
   const handleLogin = () => {
     if (!username || !password) {
@@ -14,12 +18,13 @@ const LogInForm: React.FC = () => {
       return;
     }
 
-    const storedUsers = localStorage.getItem("users");
-    const users: User[] = storedUsers ? JSON.parse(storedUsers) : [];
-    const user = users.find((u) => u.username === username && u.password === password);
+    const user = allUsers.find(
+      (u) => u.username === username && u.password === password
+    );
 
     if (user) {
-      localStorage.setItem("isLoggedIn", "true");
+      dispatch(logIn(user));
+      dispatch(setVerification(true));
       alert("Logged in successfully!");
       resetForm();
     } else {
@@ -27,10 +32,10 @@ const LogInForm: React.FC = () => {
         "The username and password do not exist. Would you like to register?"
       );
       if (confirmRegistration) {
-        const newUser: User = { username, password };
-        const updatedUsers = [...users, newUser];
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
-        localStorage.setItem("isLoggedIn", "true");
+        const newUser = { username, password };
+        dispatch(addUser(newUser));
+        dispatch(logIn(newUser));
+        dispatch(setVerification(true));
         alert("Account created and logged in successfully!");
         resetForm();
       } else {

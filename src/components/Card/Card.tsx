@@ -1,16 +1,26 @@
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import Price from '../Price/Price';
 import Button from '../Button/Button';
 import { ProductCardProps } from '../../types/Product';
+import { addToCart } from '../../store/slices/cartSlice';
+import { CartItem } from '../../store/slices/cartSlice';
 import './Card.css';
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, addToCart }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const quantityInput = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
     const quantity = parseInt(quantityInput.current?.value || '1', 10);
-    addToCart(quantity);
-    console.log(`Added to cart: ${product.meal}, Quantity: ${quantity}`);
+    const cartItem: CartItem = {
+      id: product.id, 
+      name: product.meal, 
+      price: product.price,
+      quantity
+    };
+  
+    dispatch(addToCart(cartItem));
   };
 
   return (
