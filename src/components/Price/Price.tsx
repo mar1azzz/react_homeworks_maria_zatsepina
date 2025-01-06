@@ -5,7 +5,7 @@ const Price: React.FC<PriceProps> = ({
   amount,
   currency = 'USD',
   locale = 'en-US',
-}): JSX.Element => {
+}) => {
   const formattedPrice = new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: currency,

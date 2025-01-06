@@ -5,12 +5,13 @@ import logo from '../../assets/icons/logo.png';
 import instagramIcon from '../../assets/icons/inst.png';
 import twitterIcon from '../../assets/icons/twitt.png';
 import youtubeIcon from '../../assets/icons/youtube.png';
+import footerbgr from '../../assets/images/footerbg.png'
 import './Footer.css';
 
 const Footer = () => {
     return (
         <footer className="footer">
-            <img src="../../assets/images/footerbg.png" alt="" className="footer-bg" />
+            <img src={footerbgr} alt="" className="footer-bg" />
             <div className="footer-content">
                 <div className="footer-row">
                     <ListSection

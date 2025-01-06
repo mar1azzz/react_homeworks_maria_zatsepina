@@ -5,4 +5,5 @@ export interface ButtonData {
 
 export interface ToggleButtonsProps {
   filterByCategory: (category: string) => void;
+  categories: string[];
 }
