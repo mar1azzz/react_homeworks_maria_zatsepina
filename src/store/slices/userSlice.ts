@@ -32,6 +32,7 @@ const userSlice = createSlice({
     },
     setVerification(state, action: PayloadAction<boolean>) {
       state.isVerified = action.payload;
+      localStorage.setItem('userLoggedIn', '1');
     },
   },
 });
