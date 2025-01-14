@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import MenuSection from "../../components/MenuSection/MenuSection";
 import { Product } from "../../types/Product";
 
@@ -14,9 +12,7 @@ const MenuPage: React.FC = () => {
 
   return (
     <>
-      <Header />
       <MenuSection addToCart={addToCart} />
-      <Footer />
     </>
   );
 };

@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import LogIn from "../../components/LogInForm/LogInForm";
 import { getImgUrl } from "../../app/getImage";
 import "./LogInPage.css";
@@ -19,7 +17,6 @@ const LogInPage = () => {
 
   return (
     <>
-      <Header/>
       <div
         className="login-page-container"
         style={{
@@ -31,7 +28,6 @@ const LogInPage = () => {
       >
         <LogIn />
       </div>
-      <Footer />
     </>
   );
 };
