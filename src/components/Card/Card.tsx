@@ -17,7 +17,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       id: product.id, 
       name: product.meal, 
       price: product.price,
-      quantity
+      quantity,
+      image: product.img,
     };
   
     dispatch(addToCart(cartItem));

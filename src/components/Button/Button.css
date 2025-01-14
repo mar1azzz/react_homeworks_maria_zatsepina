@@ -13,16 +13,13 @@
 .button-with-phrase:hover,
 .button-with-phrase.clicked {
   background-color: white; 
-  color: #222222;
-  ;
-  ; 
+  color: #222222; 
   border: 1px solid #B0B0B0; 
 }
 
 .button-with-phrase.inverted {
   background-color: white;
   color: #222222;
-  ;
   border: 1px solid #B0B0B0; 
 }
 

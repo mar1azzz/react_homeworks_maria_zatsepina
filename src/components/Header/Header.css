@@ -9,12 +9,13 @@
 .header-logo img {
   height: 30px;
   cursor: pointer;
-  margin-right: 70vw;
 }
 
 .header-nav {
   display: flex;
   gap: 20px;
+  width: 90%;
+  justify-content: flex-end;
 }
 
 .nav-link {
@@ -25,6 +26,21 @@
 }
 
 .nav-link:hover {
+  color: #35B8BE;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #28224B;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logout-btn:hover {
   color: #35B8BE;
 }
 
