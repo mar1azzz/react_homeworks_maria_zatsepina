@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logIn, addUser, setVerification } from "../../store/slices/userSlice";
 import { RootState } from "../../store";
 import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 import "./LogInForm.css";
 
 const LogInForm: React.FC = () => {
@@ -11,6 +12,8 @@ const LogInForm: React.FC = () => {
   const [error, setError] = useState<string>("");
   const dispatch = useDispatch();
   const allUsers = useSelector((state: RootState) => state.user.allUsers);
+  const navigate = useNavigate();
+
 
   const handleLogin = () => {
     if (!username || !password) {
@@ -27,6 +30,7 @@ const LogInForm: React.FC = () => {
       dispatch(setVerification(true));
       alert("Logged in successfully!");
       resetForm();
+      navigate("/menu");
     } else {
       const confirmRegistration = window.confirm(
         "The username and password do not exist. Would you like to register?"
@@ -38,6 +42,7 @@ const LogInForm: React.FC = () => {
         dispatch(setVerification(true));
         alert("Account created and logged in successfully!");
         resetForm();
+        navigate("/menu");
       } else {
         resetForm();
       }

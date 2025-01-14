@@ -23,7 +23,7 @@ const Footer = () => {
                         <ListSection
                             title="COMPANY"
                             children={[
-                                { label: 'Home', url: '/home' },
+                                { label: 'Home', url: '/' },
                                 { label: 'Order', url: '/order' },
                                 { label: 'FAQ', url: '/faq' },
                                 { label: 'Contact', url: '/contact' },

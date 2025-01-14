@@ -1,6 +1,7 @@
 import styled from 'styled-components'; 
 import Button from '../Button/Button';
 import { getImgUrl, getIcnUrl } from '../../app/getImage';
+import { useNavigate } from 'react-router-dom';
 
 const MainContainer = styled.div`
   background-image: url(${getImgUrl('homepage_background.png')});
@@ -97,6 +98,13 @@ const HomePageSection = () => {
   const starsIcon = getIcnUrl('trustpilot_star.png');
   const mainImage = getImgUrl('home_page_picture.png');
 
+const navigate = useNavigate();
+
+const handleClick = () => {
+  navigate('/menu');
+};
+
+
   return (
     <MainContainer>
       <TextContainer>
@@ -107,7 +115,7 @@ const HomePageSection = () => {
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
         </SubtitleText>
         <StyledButtonWrapper>
-          <Button buttonName="Place an Order" isSelected={false} isInverted={false} onClickHandler={() => {}} />
+          <Button buttonName="Place an Order" isSelected={false} isInverted={false} onClickHandler={handleClick} />
         </StyledButtonWrapper>
         <RatingWrapper>
           <img src={starsIcon} alt="Trustpilot Stars" />
