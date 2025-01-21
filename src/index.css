@@ -4,7 +4,6 @@
   font-weight: 400;
 }
 
-
 body {
   margin: 0;
   padding: 0;
@@ -24,7 +23,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.app.dark a, button{
+.app.dark .nav-link{
   color: #ffffff;
 }
 
@@ -33,6 +32,10 @@ body {
 }
 
 .nav-link:hover, .footer-link:hover {
+  color: #35b8be;
+}
+
+.app.dark .nav-link:hover, .app.dark .footer-link:hover {
   color: #35b8be;
 }
 
