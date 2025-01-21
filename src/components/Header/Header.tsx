@@ -48,11 +48,11 @@ const Header: React.FC = () => {
           Company
         </Link>
         {isUserLoggedIn ? (
-          <button onClick={handleLogout} className="nav-link header-btn">
+          <a onClick={handleLogout} className="nav-link header-btn">
             Logout
-          </button>
+          </a>
         ) : (
-          <Link to="/login" className="nav-link">
+          <Link to="/login" className="nav-link header-btn">
             Login
           </Link>
         )}
