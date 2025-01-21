@@ -1,6 +1,6 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useTheme } from "../../context/ThemeContext";
 import logo from "../../assets/icons/logo.png";
 import cart from "../../assets/icons/cart.png";
 import "./Header.css";
@@ -8,6 +8,7 @@ import { RootState } from "../../store";
 import { clearCart } from "../../store/slices/cartSlice";
 
 const Header: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
   const isUserLoggedIn = localStorage.getItem("userLoggedIn") === "1";
@@ -47,7 +48,7 @@ const Header: React.FC = () => {
           Company
         </Link>
         {isUserLoggedIn ? (
-          <button onClick={handleLogout} className="nav-link logout-btn">
+          <button onClick={handleLogout} className="nav-link header-btn">
             Logout
           </button>
         ) : (
@@ -55,6 +56,9 @@ const Header: React.FC = () => {
             Login
           </Link>
         )}
+        <a className="nav-link header-btn" onClick={toggleTheme}>
+          {theme === "light" ? "Dark" : "Light"}
+        </a>
       </nav>
       <div className="header-cart" onClick={handleCartClick}>
         <img src={cart} alt="Cart" className="cart-icon" />
@@ -65,4 +69,3 @@ const Header: React.FC = () => {
 };
 
 export default Header;
-

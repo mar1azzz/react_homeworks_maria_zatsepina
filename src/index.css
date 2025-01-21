@@ -9,3 +9,31 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.app.light {
+  background-color: white;
+  color: #28224b;
+}
+
+.app.dark {
+  background-color: #28224b;
+  color: #ffffff;
+}
+
+.header, .footer {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark a, button{
+  color: #ffffff;
+}
+
+.app.light {
+  color: #28224b;
+}
+
+.nav-link:hover, .footer-link:hover {
+  color: #35b8be;
+}
+
+
