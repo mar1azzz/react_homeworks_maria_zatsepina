@@ -2,6 +2,7 @@ import './App.css';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage/HomePage';
 import MenuPage from './pages/MenuPage/MenuPage';
@@ -17,24 +18,26 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 const App = () => {
   return (
     <Provider store={store}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path="/menu" element={<MenuPage />} />
-            <Route path="/login" element={<LogInPage />} />
-            <Route
-              path="/order"
-              element={
-                <PrivateRoute>
-                  <OrderPage />
-                </PrivateRoute>
-              }
-            />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Router>
+      <ThemeProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/menu" element={<MenuPage />} />
+              <Route path="/login" element={<LogInPage />} />
+              <Route
+                path="/order"
+                element={
+                  <PrivateRoute>
+                    <OrderPage />
+                  </PrivateRoute>
+                }
+              />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
     </Provider>
   );
 };
