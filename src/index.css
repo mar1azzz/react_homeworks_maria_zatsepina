@@ -1,0 +1,42 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app.light {
+  background-color: white;
+  color: #28224b;
+}
+
+.app.dark {
+  background-color: #28224b;
+  color: #ffffff;
+}
+
+.header, .footer {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark .nav-link{
+  color: #ffffff;
+}
+
+.app.light {
+  color: #28224b;
+}
+
+.nav-link:hover, .footer-link:hover {
+  color: #35b8be;
+}
+
+.app.dark .nav-link:hover, .app.dark .footer-link:hover {
+  color: #35b8be;
+}
+
+
