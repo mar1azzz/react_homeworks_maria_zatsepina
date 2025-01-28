@@ -15,8 +15,10 @@
         "isolatedModules": true,
         "noEmit": true,
         "jsx": "react-jsx",
-        "types": ["react", "react-dom"]
+        "types": ["react", "react-dom", "jest"]
     },
     "include": ["src", "**/*.ts", "**/*.tsx", "custom.d.ts"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules",
+                "**/*.spec.ts",
+                "**/*.test.ts"]
 }
