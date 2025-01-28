@@ -8,7 +8,7 @@ export interface CartItem {
   image: string;
 }
 
-interface CartState {
+export interface CartState {
   items: CartItem[];
   totalItems: number;
 }
