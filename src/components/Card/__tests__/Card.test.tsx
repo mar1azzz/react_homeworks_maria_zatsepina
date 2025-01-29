@@ -29,7 +29,7 @@ describe("ProductCard", () => {
         },
       },
     });
-    jest.spyOn(store, "dispatch"); // Подменяем dispatch для тестов
+    jest.spyOn(store, "dispatch");
   });
 
   it("должен отображать продукт с правильными данными", () => {

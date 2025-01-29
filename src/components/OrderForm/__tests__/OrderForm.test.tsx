@@ -34,7 +34,6 @@ describe('OrderForm', () => {
 
     jest.spyOn(store, 'dispatch');
 
-    // Мокируем window.alert
     jest.spyOn(window, 'alert').mockImplementation(() => {});
   });
 

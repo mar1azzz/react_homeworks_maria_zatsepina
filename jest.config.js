@@ -27,6 +27,7 @@ export default {
   moduleNameMapper: {
     "\\.(css|less|sass|scss)$": "identity-obj-proxy",
     "^.+\\.svg$": "jest-transformer-svg",
+    "\\.(png|jpg|jpeg|gif|webp|avif)$": "jest-transform-stub",
   },
   preset: "ts-jest",
   transformIgnorePatterns: [
