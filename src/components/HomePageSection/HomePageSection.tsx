@@ -20,12 +20,10 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  color: #333;
 `;
 
 const TitleText = styled.h1`
   font-size: 60px;
-  color: #333;
   line-height: 60px;
   font-family: Inter;
   font-weight: 400;
@@ -39,7 +37,6 @@ const SubtitleText = styled.p`
   font-size: 18px;
   font-weight: 400;
   line-height: 24.12px;
-  color: #546285;
   margin: 10px 0;
   width: 539px;
   height: 73px;
@@ -78,7 +75,6 @@ const RatingWrapper = styled.div`
   p {
     margin: 0;
     font-size: 0.9rem;
-    color: #666;
   }
 `;
 
