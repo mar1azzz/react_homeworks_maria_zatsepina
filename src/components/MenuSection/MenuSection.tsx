@@ -61,7 +61,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({ addToCart }): JSX.Element => 
       <ToggleButtons filterByCategory={filterByCategory} categories={categories} />
       {isLoading && <p>Loading...</p>}
       {error && (
-        <p className="error-message">
+        <p className={`error-message ${theme}`}>
           Sorry, looks like we have some troubles on our server, please{' '}
           <span className="reload-link" onClick={() => window.location.reload()}>
             reload

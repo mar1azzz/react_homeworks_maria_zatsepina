@@ -25,6 +25,10 @@
     margin-top: 20px;
 }
 
+.error-message.dark {
+    color: azure;
+}
+
 .reload-link {
     color: #35B8BE;
     cursor: pointer;

@@ -3,9 +3,12 @@ import ListSection from '../ListSection/ListSection';
 import { useTheme } from '../../context/ThemeContext';
 import { FlexContainer } from '../FlexContainer/FlexContainer';
 import logo from '../../assets/icons/logo.png';
-import instagramIcon from '../../assets/icons/inst.png';
-import twitterIcon from '../../assets/icons/twitt.png';
-import youtubeIcon from '../../assets/icons/youtube.png';
+import instagramIconlight from '../../assets/icons/inst.png';
+import twitterIconlight from '../../assets/icons/twitt.png';
+import youtubeIconlight from '../../assets/icons/youtube.png';
+import instagramIconDark from '../../assets/icons/inst-dark.png';
+import twitterIconDark from '../../assets/icons/twitter-dark.png';
+import youtubeIconDark from '../../assets/icons/youtube-dark.png';
 import footerbgr from '../../assets/images/footerbg.png'
 import './Footer.css';
 
@@ -64,13 +67,13 @@ const Footer: React.FC = () => {
           </span>
           <FlexContainer>
             <a href="https://instagram.com" className="social-icon">
-              <img src={instagramIcon} alt="Instagram" />
+              <img src={theme === 'dark' ? instagramIconDark : instagramIconlight} alt="Instagram" />
             </a>
             <a href="https://twitter.com" className="social-icon">
-              <img src={twitterIcon} alt="Twitter" />
+              <img src={theme === 'dark' ? twitterIconDark : twitterIconlight} alt="Twitter" />
             </a>
             <a href="https://youtube.com" className="social-icon">
-              <img src={youtubeIcon} alt="YouTube" />
+              <img src={theme === 'dark' ? youtubeIconDark : youtubeIconlight} alt="YouTube" />
             </a>
           </FlexContainer>
         </div>
