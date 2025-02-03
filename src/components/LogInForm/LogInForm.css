@@ -12,6 +12,10 @@
     line-height: 55px;
     padding-top: 8vh;
   }
+
+  .login-title.dark {
+    text-shadow: 0 0 10px rgba(47, 0, 255, 0.913);
+  }
   
   .login-container {
     width: 690px;
@@ -25,6 +29,11 @@
     justify-content: center;
     margin-bottom: 20px;
   }
+
+  .login-container.dark {
+    background-color: #170d4a7b;
+    box-shadow: 0 0 10px 2px rgba(98, 0, 255, 0.331);
+  }
   
   .form-group-horizontal {
     display: flex;
@@ -32,12 +41,10 @@
     justify-content: space-between;
     margin-bottom: 25px;
     width: 75%;
-
   }
   
   label {
     font-size: 18px;
-    color: #08090A;
     margin-right: 10px;
     white-space: nowrap;
     min-width: 100px;

@@ -6,14 +6,16 @@ import OrderForm from '../../components/OrderForm/OrderForm';
 import { Link } from 'react-router-dom';
 import './OrderPage.css';
 import { getImgUrl } from '../../app/getImage';
+import { useTheme } from '../../context/ThemeContext';
 
 const OrderPage: React.FC = () => {
+  const { theme } = useTheme();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
   return (
     <div className="order-page"
     style={{
-                backgroundImage: `url(${getImgUrl("order_page_picture.png")})`,
+                backgroundImage: `url(${getImgUrl(theme === 'dark' ? 'dark-background.png' : 'login_background.png')})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center'

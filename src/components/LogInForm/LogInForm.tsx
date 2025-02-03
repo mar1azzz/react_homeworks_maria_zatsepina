@@ -5,8 +5,10 @@ import { RootState } from "../../store";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import "./LogInForm.css";
+import { useTheme } from "../../context/ThemeContext";
 
 const LogInForm: React.FC = () => {
+  const { theme } = useTheme();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -61,8 +63,8 @@ const LogInForm: React.FC = () => {
 
   return (
     <div className="login-page">
-      <h2 className="login-title">Log In</h2>
-      <div className="login-container">
+      <h2 className={`login-title ${theme}`}>Log In</h2>
+      <div className={`login-container ${theme}`}>
         <div className="form-group-horizontal">
           <label htmlFor="username">User name:</label>
           <input

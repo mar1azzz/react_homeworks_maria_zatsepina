@@ -6,8 +6,10 @@ import { ProductCardProps } from '../../types/Product';
 import { addToCart } from '../../store/slices/cartSlice';
 import { CartItem } from '../../store/slices/cartSlice';
 import './Card.css';
+import { useTheme } from '../../context/ThemeContext';
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { theme } = useTheme();
   const quantityInput = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
@@ -25,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="product-card">
+    <div className={`product-card ${theme}`}>
       <img src={product.img} alt={product.meal} className="product-image" />
       <div className="product-info">
         <div className="title-and-price">

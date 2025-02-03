@@ -2,8 +2,10 @@ import React from "react";
 import LogIn from "../../components/LogInForm/LogInForm";
 import { getImgUrl } from "../../app/getImage";
 import "./LogInPage.css";
+import { useTheme } from '../../context/ThemeContext';
 
 const LogInPage = () => {
+  const { theme } = useTheme();
   // Начальные данные в localStorage для тестирования
   React.useEffect(() => {
     const defaultUsers = [
@@ -18,12 +20,12 @@ const LogInPage = () => {
   return (
     <>
       <div
-        className="login-page-container"
+        className='login-page-container'
         style={{
-            backgroundImage: `url(${getImgUrl("login_background.png")})`,
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
+          backgroundImage: `url(${getImgUrl(theme === 'dark' ? 'dark-background.png' : 'login_background.png')})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
         }}
       >
         <LogIn />

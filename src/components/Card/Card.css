@@ -10,6 +10,12 @@
     color: #28224b;
 }
 
+.product-card.dark{
+    background-color: #170d4a7b;
+    color: #ffffff;
+    border: 1px solid rgba(203, 100, 255, 0.281);
+}
+
 .product-image {
     width: 120px;
     height: 120px;

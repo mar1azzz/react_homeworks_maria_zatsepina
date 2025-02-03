@@ -7,10 +7,12 @@ import ToggleButtons from '../ToggleButtons/ToggleButtons';
 import { MenuSectionProps } from '../../types/MenuSection';
 import { ExtendedProduct } from '../../types/Product';
 import { useFetchWithLogging } from '../../hooks/useFetch';
+import { useTheme } from '../../context/ThemeContext';
 import './MenuSection.css';
 
 const MenuSection: React.FC<MenuSectionProps> = ({ addToCart }): JSX.Element => {
   const apiUrl = 'https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals';
+  const { theme } = useTheme();
 
   const { data: products, isLoading, error } = useFetchWithLogging<ExtendedProduct[]>(apiUrl);
 
@@ -54,7 +56,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({ addToCart }): JSX.Element => 
   };
 
   return (
-    <section className="menu-section">
+    <section className={`menu-section ${theme}`}>
       <BrowseMenuText />
       <ToggleButtons filterByCategory={filterByCategory} categories={categories} />
       {isLoading && <p>Loading...</p>}

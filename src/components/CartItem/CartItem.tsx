@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { removeFromCart, updateCartItem } from '../../store/slices/cartSlice';
 import { CartItem as CartItemType } from '../../store/slices/cartSlice';
 import Price from '../Price/Price';
+import { useTheme } from '../../context/ThemeContext';
 import './CartItem.css';
 
 interface CartItemProps {
@@ -10,6 +11,7 @@ interface CartItemProps {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
+  const { theme } = useTheme();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(item.quantity);
 
@@ -28,7 +30,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const totalPrice = (item.price * quantity).toFixed(2);
 
   return (
-    <div className="cart-item">
+    <div className={`cart-item ${theme}`}>
       <img src={item.image} alt={item.name} className="cart-item-image" />
       <div className="cart-item-info">
         <h3 className="cart-item-name">{item.name}</h3>

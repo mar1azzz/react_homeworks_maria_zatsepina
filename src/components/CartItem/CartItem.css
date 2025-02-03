@@ -7,7 +7,12 @@
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 10px;
-  background-color: #f9f9f9;
+}
+
+.cart-item.dark{
+  background-color: #170d4a7b;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 5px rgba(203, 100, 255, 0.8);
 }
 
 .cart-item-image {

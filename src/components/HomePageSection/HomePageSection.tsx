@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import Button from '../Button/Button';
 import { getImgUrl, getIcnUrl } from '../../app/getImage';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 
-const MainContainer = styled.div`
-  background-image: url(${getImgUrl('homepage_background.png')});
+const MainContainer = styled.div<{ theme: string }>`
+  background-image: url(${({ theme }) => getImgUrl(theme === 'dark' ? 'dark-background.png' : 'homepage_background.png')});
   background-size: cover;
   background-position: center;
   display: flex;
@@ -91,6 +92,8 @@ const FoodImage = styled.img`
 `;
 
 const HomePageSection = () => {
+  const { theme } = useTheme();
+
   const starsIcon = getIcnUrl('trustpilot_star.png');
   const mainImage = getImgUrl('home_page_picture.png');
 
@@ -102,7 +105,7 @@ const handleClick = () => {
 
 
   return (
-    <MainContainer>
+    <MainContainer theme={theme}>
       <TextContainer>
         <TitleText>
           Beautiful food & takeaway, <span>delivered</span> to your door.
