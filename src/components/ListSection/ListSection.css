@@ -1,0 +1,43 @@
+.list-section {
+    max-width: 240px;
+    min-width: 150px;
+}
+
+.list-section-title {
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 1.5px;
+    text-align: left;
+}
+
+.list-section-title img {
+    width: auto;
+    height: 30px;
+    margin-top: 15px;
+}
+
+.list-section-children {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-section-item {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #546285;
+}
+
+.list-section-link {
+    color: #546285;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.list-section-link:hover,
+.list-section-link:active {
+    color: #35B8BE;
+    ;
+}
